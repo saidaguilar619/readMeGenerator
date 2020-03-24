@@ -2,17 +2,19 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 const api = require("./api")
+const axios = require("axios");
+
 const generateMarkdown = require("./generateMarkdown")
 
 const writeFileAsync = util.promisify(fs.writeFile);
+
 
 function promptUser() {
     return inquirer.prompt([{
             type: "input",
             name: "Username",
             message: "What is your Github username?"
-        },
-        {
+        }, {
             type: 'input',
             name: 'title',
             message: 'Project title?'
@@ -57,10 +59,12 @@ function promptUser() {
 
 promptUser()
     .then(function (answers) {
-        console.log(answers);
-        const gitHub = api.getUser(answers.Username)
-        const markdown = generateMarkdown(answers);
-        return writeFileAsync("ReadMe.md", markdown);
+        axios.get(`https://api.github.com/users/${answers.Username}`)
+            .then(function (res) {
+                const markdown = generateMarkdown(answers, res.data.avatar_url);
+                return writeFileAsync("ReadMe.md", markdown);
+            });
+
     })
     .then(function () {
         console.log("Successfully wrote to README.md");
@@ -68,5 +72,3 @@ promptUser()
     .catch(function (err) {
         console.log(err);
     });
-
-

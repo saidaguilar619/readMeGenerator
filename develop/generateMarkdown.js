@@ -1,4 +1,4 @@
-function generateMarkdown(data) {
+function generateMarkdown(data, gitImage) {
   return `
   ${data.title}
 
@@ -11,6 +11,8 @@ function generateMarkdown(data) {
   - [Contributing](#Contributing)
   - [Test](#Test)
   - [Questions](#FAQs)
+
+  ![](${gitImage})
               
   ## Installation
   ${data.installation}

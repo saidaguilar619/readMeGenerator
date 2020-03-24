@@ -1,5 +1,5 @@
 
-  new project generator
+  qw
 
   ![Downloads badge](https://img.shields.io/static/v1?label=Downloads&message=1,000,000&color=blue "Downloads Badge")
 
@@ -10,16 +10,18 @@
   - [Contributing](#Contributing)
   - [Test](#Test)
   - [Questions](#FAQs)
+
+  ![](https://avatars0.githubusercontent.com/u/58634200?v=4)
               
   ## Installation
-  yes
+  as
   ## Usage
-  alot
+  ds
   ## License
-  mit
+  as
   ## Contributing
   undefined
   ## Test
-  yes
+  as
   ## Questions
-  no
+  ds
